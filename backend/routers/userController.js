@@ -39,7 +39,7 @@ router.post("/signup", async (req, res) => {
         });
         const token = createToken(user.id);
 
-        res.status(200).json({ user_id: user.id, token: token });
+        res.status(200).json({ user_id: user.id, email: user.email, token: token });
     } catch (error) {
         if (error.name === 'SequelizeUniqueConstraintError') {
             if (error.errors[0].path === 'email_UNIQUE') {
@@ -74,7 +74,7 @@ router.post("/login", async (req, res) => {
         // Create JWT token
         const token = createToken(user.id);
 
-        res.status(200).json({ user_id: user.id, token: token });
+        res.status(200).json({ user_id: user.id, email: user.email, token: token });
     } catch (error) {
         console.error(error); // Log the error
         res.status(500).json({ errorMessage: 'Internal server error.' });

@@ -16,10 +16,13 @@ const requireAuth = async (req, res, next) => {
     // Try to retrieve user from db then attach id to request
     try {
         const {id} = jwt.verify(token, process.env.SECRET);
-        req.user = await User.findOne({ where: { id: id } }).select('id');
+        user = await User.findOne({ where: { id: id } });
+        req.userId = user.id;
         next();
     } catch(error) {
         console.log(error);
         res.status(401).json({ error: 'Request is not authorized '});
     }
 };
+
+module.exports = requireAuth;

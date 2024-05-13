@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import Featured from '../homePageComponents/Featured.js';
 
 const Home = () => {
     return (
-        <div>
-            Home page
+        <div className="container">
+            <Featured />
         </div>
     );
 }

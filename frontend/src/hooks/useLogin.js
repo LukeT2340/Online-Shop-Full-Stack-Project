@@ -14,7 +14,7 @@ export const useLogin = () => {
             password: password.trim()
         };
 
-        const response = await fetch('http://127.0.0.1:3002/user/login', {
+        const response = await fetch('http://192.168.1.145:3002/user/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

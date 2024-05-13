@@ -3,9 +3,13 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-d
 import Signup from './pages/Signup.js';
 import Login from './pages/Login.js';
 import Home from './pages/Home.js';
-import NavBar from './components/NavBar.js';
+import About from './pages/About.js';
+import Explore from './pages/Explore.js';
+import ProductDetails from './pages/ProductDetails.js';
+import NavBar from './sharedComponents/NavBar.js';
 import React, { useState } from 'react';
 import { useAuthContext } from "./hooks/useAuthContext";
+import Featured from "./pages/Featured.js";
 
 function App() {
   const { user } = useAuthContext();
@@ -15,6 +19,11 @@ function App() {
         <NavBar />
         <Routes> 
           <Route path="/home" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/explore" element={<Explore />} />
+          <Route path="/featured" element={<Featured />} />
+          <Route path="/product/:productId" element={<ProductDetails />} />
+          
           {user ? (
             <>
               <Route path="/signup" element={<Navigate to="/home" />} />
@@ -26,6 +35,7 @@ function App() {
               <Route path="/login" element={<Login />} />
             </>
           )}
+
           <Route path="*" element={<Navigate to="/home" />} /> 
         </Routes>
     </Router>

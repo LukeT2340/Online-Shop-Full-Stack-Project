@@ -1,0 +1,38 @@
+.quantity-selector {
+    outline: none;
+    border: 1px solid gray;
+    border-radius: 20px;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+}
+
+.quantity-button {
+    outline: none;
+    border: none;
+}
+
+.quantity-button:focus {
+    outline: none;
+    border: none;
+    box-shadow: none;
+}
+
+.quantity-display {
+    border: none;
+    outline: none;
+}
+
+.quantity-display:focus {
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
+
+.add-to-cart-button {
+    border-radius: 20px;
+    background-color: rgb(255, 204, 0);
+}
+
+.buy-now-button {
+    border-radius: 20px;
+    background-color: orange;
+}

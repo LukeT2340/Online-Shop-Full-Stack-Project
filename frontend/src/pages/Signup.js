@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-//import { useNavigate } from 'react-router-dom';
 import { useSignup } from '../hooks/useSignup';
+import { Link } from 'react-router-dom';
 
 // Signup Page
 const Signup = () => {
@@ -63,6 +63,7 @@ const Signup = () => {
                             )}
                             <button disabled={isLoading} type="submit" className="btn btn-primary btn-block">Sign up</button>
                         </form>
+                        <p>Already have an account? <Link to="/login">Log in</Link></p>
                     </div>
                 </div>
             </div>

@@ -1,0 +1,42 @@
+import { FeaturedProducts } from '../hooks/FeaturedProducts.js';
+import ProductCard from '../sharedComponents/ProductCard.js';
+import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
+
+const Featured = () => {
+    const { getFeatured, featured, isLoading, error } = FeaturedProducts();
+
+    useEffect(() => {
+        getFeatured(6);
+    }, []);
+    return (
+        <div className='col p-0 m-0'>
+            <div className="row mx-3 mt-3">
+                <h6 style={{ fontSize: '1.3rem', color: '#333' }}>Featured</h6>
+                <Link className="ml-auto" to="/featured">See all</Link>
+            </div>
+            <div className="row p-0 m-0">
+                {isLoading ? (
+                    <div className="col">
+                        <p>Loading...</p>
+                    </div>
+                ) : error ? (
+                    <div className="col">
+                        <p>Error: {error}</p>
+                    </div>
+                ) : featured ? (
+                    featured.map((product) => (
+                        <ProductCard key={product.id} product={product} />
+                    ))
+                ) : (
+                    <div className="col">
+                        <p>No featured products available</p>
+                    </div>
+                )}
+            </div>
+        </div>
+
+    )
+}
+
+export default Featured;
