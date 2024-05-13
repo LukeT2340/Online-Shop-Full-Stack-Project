@@ -36,7 +36,7 @@ export const GetCart = () => {
 
         // Attempt to retrieve cart
         try {
-            const response = await fetch(`http://onlineshopfullstackproject-production.up.railway.app/cart/get`, {
+            const response = await fetch(`https://onlineshopfullstackproject-production.up.railway.app/cart/get`, {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${token}`, // Attach token in header for authentication

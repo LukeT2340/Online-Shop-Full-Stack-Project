@@ -51,7 +51,7 @@ export const useSignup = () => {
             email: trimmedEmail
         };
 
-        const response = await fetch('http://192.168.1.145:3002/user/signup', {
+        const response = await fetch('https://onlineshopfullstackproject-production.up.railway.app/user/signup', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

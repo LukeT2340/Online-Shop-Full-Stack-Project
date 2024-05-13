@@ -8,7 +8,7 @@ export const FeaturedProducts = () => {
         setIsLoading(true);
         setError(null);
 
-        const response = await fetch(`http://onlineshopfullstackproject-production.up.railway.app/products/featured?limit=${limit}`, {
+        const response = await fetch(`https://onlineshopfullstackproject-production.up.railway.app/products/featured?limit=${limit}`, {
         method: 'GET',
         });
 

@@ -12,7 +12,7 @@ export const RemoveFromCart = () => {
 
         // Attempt to retrieve cart
         try {
-            const response = await fetch(`http://onlineshopfullstackproject-production.up.railway.app/cart/removeEntry`, {
+            const response = await fetch(`https://onlineshopfullstackproject-production.up.railway.app/cart/removeEntry`, {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${token}`, // Attach token in header for authentication

@@ -16,7 +16,7 @@ export const PostCart = () => {
         
         // Attempt to add to cart
         try {
-            const response = await fetch('http://onlineshopfullstackproject-production.up.railway.app/cart/add', {
+            const response = await fetch('https://onlineshopfullstackproject-production.up.railway.app/cart/add', {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${token}`, // Attach token in header for authentication
