@@ -14,7 +14,7 @@ export const useLogin = () => {
             password: password.trim()
         };
 
-        const response = await fetch('http://onlineshopfullstackproject-production.up.railway.app/user/login', {
+        const response = await fetch('https://onlineshopfullstackproject-production.up.railway.app/user/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

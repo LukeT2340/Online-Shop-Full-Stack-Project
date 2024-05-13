@@ -40,22 +40,6 @@ const User = sequelize.define('User', {
         allowNull: false,
         defaultValue: DataTypes.NOW 
     },
-    bio: {
-        type: DataTypes.STRING,
-        defaultValue: ""
-    },
-    profile_picture_url: {
-        type: DataTypes.STRING,
-        defaultValue: ""
-    },
-    following_count: {
-        type: DataTypes.INTEGER,
-        defaultValue: 0 
-    },
-    followers_count: {
-        type: DataTypes.INTEGER,
-        defaultValue: 0
-    }
 }, {
     timestamps: false, 
     underscored: true, 
