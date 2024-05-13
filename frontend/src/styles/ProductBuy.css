@@ -1,6 +1,7 @@
 .quantity-selector {
     outline: none;
     border: 1px solid gray;
+    max-width: 15rem;
     border-radius: 20px;
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
 }
@@ -28,11 +29,13 @@
 }
 
 .add-to-cart-button {
+    font-weight: 500;
     border-radius: 20px;
     background-color: rgb(255, 204, 0);
 }
 
 .buy-now-button {
+    font-weight: 500;
     border-radius: 20px;
     background-color: orange;
 }

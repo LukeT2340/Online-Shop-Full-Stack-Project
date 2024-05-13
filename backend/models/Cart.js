@@ -1,9 +1,11 @@
 const { Sequelize, DataTypes } = require('sequelize');
+require('dotenv').config();
 
 // Create a new Sequelize instance
-const sequelize = new Sequelize('my_db_01', 'root', 'National$1', {
-  host: 'localhost',
-  dialect: 'mysql'
+const sequelize = new Sequelize(process.env.DB_DATABASE, process.env.DB_USER, process.env.DB_PASS, {
+    dialect: 'mysql',
+    host: process.env.DB_HOST,
+    port: process.env.DB_POST,
 });
 
 // Define the User model
@@ -40,10 +42,6 @@ const Cart = sequelize.define('Cart', {
     created_at: {
         type: DataTypes.DATE,
         allowNull: true
-    },
-    product_price_at_purchase: {
-        type: DataTypes.DOUBLE,
-        allowNull: false
     },
 }, {
     timestamps: false, 

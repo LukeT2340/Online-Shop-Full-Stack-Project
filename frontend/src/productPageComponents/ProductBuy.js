@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom';
 import { useLocation, useNavigate } from 'react-router';
 import { useState } from 'react';
 import '../styles/ProductBuy.css';
-import { Cart } from '../hooks/Cart.js';
+import { PostCart } from '../hooks/PostCart.js';
 
 const ProductBuy = ({ product }) => {
     const { user } = useAuthContext();
     const [quantity, setQuantity] = useState(1);
     const navigate = useNavigate();
-    const { addToCart, isLoading, isSuccess, error } = Cart();
+    const { addToCart, isLoading, isSuccess, error } = PostCart();
 
     // Handle quantity change
     const handleQuantityChange = (value) => {
@@ -45,13 +45,13 @@ const ProductBuy = ({ product }) => {
 
     return (
         <div className="card col-md-3 justify-content-top align-items-center">
-                <div className="container">
+                <div className="container mb-5">
                 {product.quantity_available > 0 ? (
                     <form> 
                     <p className="card-text font-weight-bold mt-2 mb-0">One-time-purchase: </p>
                     <p className="card-text font-weight-bold m-0">${product.price}</p>
                     <p className="card-text text-success py-2 m-0">In stock: {product.quantity_available}</p>
-                        <div className="input-group w-100 d-flex quantity-selector ">
+                        <div className="input-group w-100 mx-auto d-flex quantity-selector ">
                             <button type="button" className="btn quantity-button" onClick={() => handleQuantityChange(-1)}>-</button>
                             <input type="text" className="form-control text-center quantity-display bg-white" value={`Quantity: ${quantity}`} readOnly />
                             <button type="button" className="btn quantity-button" onClick={() => handleQuantityChange(1)}>+</button>

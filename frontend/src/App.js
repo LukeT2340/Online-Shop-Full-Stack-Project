@@ -5,6 +5,7 @@ import Login from './pages/Login.js';
 import Home from './pages/Home.js';
 import About from './pages/About.js';
 import Explore from './pages/Explore.js';
+import Cart from './pages/Cart.js';
 import ProductDetails from './pages/ProductDetails.js';
 import NavBar from './sharedComponents/NavBar.js';
 import React, { useState } from 'react';
@@ -23,7 +24,8 @@ function App() {
           <Route path="/explore" element={<Explore />} />
           <Route path="/featured" element={<Featured />} />
           <Route path="/product/:productId" element={<ProductDetails />} />
-          
+          <Route path="/cart" element={<Cart />} />
+
           {user ? (
             <>
               <Route path="/signup" element={<Navigate to="/home" />} />
