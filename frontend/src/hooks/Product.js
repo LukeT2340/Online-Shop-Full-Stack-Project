@@ -10,7 +10,7 @@ export const Product = () => {
         setError(null);
 
         try {
-            const response = await fetch(`http://192.168.1.145:3002/products/getOne?id=${id}`, {
+            const response = await fetch(`http://onlineshopfullstackproject-production.up.railway.app/products/getOne?id=${id}`, {
                 method: 'GET',
             });
 
