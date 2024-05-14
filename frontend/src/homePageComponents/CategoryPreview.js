@@ -37,6 +37,8 @@ const CategoryPreview = ( {category} ) => {
                     </div>
                 )}
             </div>
+            <hr className="my-4" />
+
             </>
             )}
         </div>

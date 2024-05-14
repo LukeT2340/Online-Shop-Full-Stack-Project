@@ -29,38 +29,38 @@ const Signup = () => {
     }
 
     return (
-        <div className="container">
-            <div className="row justify-content-center mt-5">
-            <div className="col-md-6">
-                <div className="card">
-                    <div className="card-body">
-                        <h1 className="card-title text-center mb-4">Signup</h1>
-                        <form onSubmit={submitForm}>
-                            <div className="mb-3">
-                                <label htmlFor="email" className="form-label" >Email</label>
-                                <input type="email" className="form-control" id="email" placeholder="Email" onChange={handleEmailChange} required />
-                            </div>
-                            <div className="mb-3">
-                                <label htmlFor="password" className="form-label">Password</label>
-                                <input type="password" className="form-control" id="password" placeholder="Password" onChange={handlePassword1Change} required />
-                            </div>
-                            <div className="mb-3">
-                                <label htmlFor="confirmPassword" className="form-label">Confirm Password</label>
-                                <input type="password" className="form-control" id="confirmPassword" placeholder="Confirm password" onChange={handlePassword2Change} required />
-                            </div>
-                            {error && (
-                                <div className="alert alert-danger" role="alert">
-                                    {error}
+        <div className="container mt-5">
+            <div className="row justify-content-center">
+                <div className="col-md-6">
+                    <div className="card">
+                        <div className="card-body">
+                            <h1 className="card-title text-center mb-4">Sign Up</h1>
+                            <form onSubmit={submitForm}>
+                                <div className="mb-3">
+                                    <label htmlFor="email" className="form-label">Email</label>
+                                    <input type="email" className="form-control" id="email" placeholder="Email" onChange={handleEmailChange} required />
                                 </div>
-                            )}
-                            <button disabled={isLoading} type="submit" className="btn btn-primary btn-block">Sign up</button>
-                        </form>
-                        <p>Already have an account? <Link to="/login">Log in</Link></p>
+                                <div className="mb-3">
+                                    <label htmlFor="password1" className="form-label">Password</label>
+                                    <input type="password" className="form-control" id="password1" placeholder="Password" onChange={handlePassword1Change} required />
+                                </div>
+                                <div className="mb-3">
+                                    <label htmlFor="password2" className="form-label">Confirm Password</label>
+                                    <input type="password" className="form-control" id="password2" placeholder="Confirm password" onChange={handlePassword2Change} required />
+                                </div>
+                                {error && (
+                                    <div className="alert alert-warning" role="alert">
+                                        {error}
+                                    </div>
+                                )}
+                                <button disabled={isLoading} type="submit" className="btn btn-primary btn-block">Sign Up</button>
+                            </form>
+                            <p className="text-center mt-3">Already have an account? <Link to="/login">Log In</Link></p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
     );
 };
 
