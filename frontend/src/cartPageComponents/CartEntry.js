@@ -32,19 +32,17 @@ const CartEntry = ( {item} ) => {
     return (
         <>
             {product && !isDeleted && (
-                <div className="row rounded border mb-2 mx-3" style={{ height: "200px" }}>
-                    <div className="col-md-2 py-1 mx-auto image-container d-flex justify-content-center align-items-center" style={{ maxHeight: "100%", maxWidth: "100%" }}>
-                        <img 
-                            src={product.image_url} 
-                            className="img-fluid" 
-                            style={{ maxHeight: "100%", maxWidth: "100%", objectFit: "contain" }} 
-                            alt={product.name} 
-                        />
-                    </div>
+                <div className='row h-50 border rounded mb-3' style={{width: '100%'}}>
+                    <img 
+                        src={product.image_url} 
+                        className="img-fluid col-md-2 py-2" 
+                        style={{ objectFit: "contain", maxHeight: "200px"}} 
+                        alt={product.name} 
+                    />
 
 
 
-                    <div className="col-md-9 d-flex flex-column r align-items-center pt-3">
+                    <div className="col-md-8 d-flex flex-column r align-items-center pt-3">
                         <Link to={`/product/${product.id}`} style={{ color: 'black', width: '100%', overflow: 'hidden', textOverflow: 'ellipsis', 'white-space': 'nowrap' }}>
                             {product.name}
                         </Link>
@@ -55,23 +53,24 @@ const CartEntry = ( {item} ) => {
                             </div>
                         </div>
                     </div>
-                    <div className="col-md-1 p-3 my-auto">
+                    <div className="col-md-2 p-3 d-flex flex-column justify-content-center align-items-center">
                         <div className="input-group my-3">
-                                <select 
-                                    className="form-control text-center quantity-dropdown bg-white" 
-                                    value={quantity} 
-                                    onChange={(e) => handleQuantityChange(parseInt(e.target.value))}
-                                >
+                            <select 
+                                className="form-control text-center quantity-dropdown bg-white" 
+                                value={quantity} 
+                                onChange={(e) => handleQuantityChange(parseInt(e.target.value))}
+                            >
                                 {/* Generate options dynamically based on available quantity */}
                                 {Array.from({ length: product.quantity_available }, (_, index) => (
                                     <option key={index + 1} value={index + 1}>{index + 1}</option>
                                 ))}
-                                </select>
-                            </div>
-                        <button className='btn btn-warning btn-sm' onClick={removeEntry}>
+                            </select>
+                        </div>
+                        <button className='btn btn-sm btn-warning mt-2' onClick={removeEntry}>
                             <FontAwesomeIcon icon={faTrashAlt} /> Remove
                         </button>
                     </div>
+
                 </div>
         )}
         </>

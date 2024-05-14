@@ -23,9 +23,11 @@ const Cart = () => {
             {cartEntries && cartEntries.length === 0 && (
                 <h6>Cart is empty</h6>
             )}
-            {cartEntries && cartEntries.map((item) => (
-                <CartEntry key={item.product_id} item={item} />
-            ))}
+            <div className='row'>
+                {cartEntries && cartEntries.map((item) => (
+                    <CartEntry key={item.product_id} item={item} />
+                ))}
+            </div>
         </div>
     )
 }
