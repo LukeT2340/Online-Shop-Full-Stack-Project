@@ -32,7 +32,7 @@ const CartEntry = ( {item} ) => {
     return (
         <>
             {product && !isDeleted && (
-                <div className="row d-flex border rounded mb-3 align-items-center">
+                <div className="row d-flex border rounded mx-3 mb-3 align-items-center">
                     <img 
                         src={product.image_url} 
                         className="img-fluid col-md-2 py-2" 
