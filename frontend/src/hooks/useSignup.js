@@ -51,7 +51,7 @@ export const useSignup = () => {
             email: trimmedEmail
         };
 
-        const response = await fetch('${process.env.API_URL}/user/signup', {
+        const response = await fetch(`${process.env.API_URL}/user/signup`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
