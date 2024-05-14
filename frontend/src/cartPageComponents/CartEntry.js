@@ -42,7 +42,8 @@ const CartEntry = ( {item} ) => {
 
 
 
-                    <div className="col-md-8 d-flex flex-column r align-items-center pt-3">
+                    <div className="col-md-8 d-flex flex-column mb-auto pt-3">
+                        
                         <Link to={`/product/${product.id}`} style={{ color: 'black', width: '100%', overflow: 'hidden', textOverflow: 'ellipsis', 'white-space': 'nowrap' }}>
                             {product.name}
                         </Link>
