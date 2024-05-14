@@ -23,12 +23,12 @@ const NavBar = () => {
     return (
         <Navbar expand="lg" className="bg-body-tertiary" expanded={expanded}>
             <div className="container">
+                <Link className="nav-item mr-3 my-auto pb-2" to="/home" onClick={() => setExpanded(false)}>
+                    <img src='Branding.png' style={{ width: '3.9rem' }} alt="Logo" />
+                </Link>
                 <Navbar.Toggle aria-controls="navbarSupportedContent" onClick={() => setExpanded(!expanded)} />
                 <Navbar.Collapse id="navbarSupportedContent">
                     <ul className="navbar-nav mr-auto">
-                        <Link className="nav-item mr-3 my-auto pb-3" to="/home" onClick={() => setExpanded(false)}>
-                            <img src='Branding.png' style={{ width: '3.9rem' }} alt="Logo" />
-                        </Link>
                         <li className="nav-item">
                             <Link className="nav-link text-dark" to="/home" onClick={handleLinkClick}>Home</Link>
                         </li>
