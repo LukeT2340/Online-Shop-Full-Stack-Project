@@ -4,6 +4,7 @@ const cors = require('cors');
 const userController = require('./routers/userController');
 const productController = require('./routers/productController');
 const cartController = require('./routers/cartController');
+const categoryController = require('./routers/categoryController');
 const cookieParser = require('cookie-parser');
 require('dotenv').config();
 
@@ -24,6 +25,9 @@ app.use('/products', productController);
 
 // Use cart routes
 app.use('/cart', cartController);
+
+// Use category routes
+app.use('/category', categoryController);
 
 // Start listening
 const port = process.env.PORT || 3002;

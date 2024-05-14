@@ -10,7 +10,7 @@ export const Product = () => {
         setError(null);
 
         try {
-            const response = await fetch(`https://onlineshopfullstackproject-production.up.railway.app/products/getOne?id=${id}`, {
+            const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/products/getOne?id=${id}`, {
                 method: 'GET',
             });
 

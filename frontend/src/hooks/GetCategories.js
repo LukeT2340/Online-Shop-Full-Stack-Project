@@ -1,14 +1,14 @@
 import { useState } from 'react';
 
-export const FeaturedProducts = () => {
-    const [featured, setFeatures] = useState(null);
+export const GetCategories = () => {
+    const [categories, setCategories] = useState(null);
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(null);
-    const getFeatured = async(limit) => {
+    const getCategories = async(limit) => {
         setIsLoading(true);
         setError(null);
 
-        const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/products/featured?limit=${limit}`, {
+        const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/category/get?limit=${limit}`, {
         method: 'GET',
         });
 
@@ -22,10 +22,10 @@ export const FeaturedProducts = () => {
         // Handle successful fetch
         if (response.ok) {
             const json = await response.json();
-            setFeatures(json);
+            setCategories(json);
             setIsLoading(false);
         }
     }
 
-    return { getFeatured, featured, isLoading, error };
+    return { getCategories, categories, isLoading, error };
 };

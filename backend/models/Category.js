@@ -8,8 +8,8 @@ const sequelize = new Sequelize(process.env.DB_DATABASE, process.env.DB_USER, pr
     port: process.env.DB_PORT,
 });
 
-// Define the User model
-const User = sequelize.define('User', {
+// Define the Category model
+const Category = sequelize.define('Category', {
     id: {
         type: DataTypes.INTEGER,
         unique: true,
@@ -21,29 +21,10 @@ const User = sequelize.define('User', {
         allowNull: false,
         unique: false 
     },
-    handle: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        unique: true 
-    },
-    email: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        unique: true 
-    },
-    hashed_password: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    date_registered: {
-        type: DataTypes.DATE,
-        allowNull: false,
-        defaultValue: DataTypes.NOW 
-    },
 }, {
     timestamps: false, 
     underscored: true, 
-    tableName: 'users' 
+    tableName: 'categories' 
 });
 
-module.exports = User;
+module.exports = Category;
