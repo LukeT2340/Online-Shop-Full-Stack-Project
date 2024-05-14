@@ -27,12 +27,10 @@ async function hashPassword(password) {
 // Handle signup requests
 router.post("/signup", async (req, res) => {
     const userData = req.body;
-    const { username, password, email } = userData;
+    const { password, email } = userData;
     try {
         const hashedPassword = await hashPassword(password);
         const user = await User.create({
-            name: username,
-            handle: username.toLowerCase(),
             email: email,
             hashed_password: hashedPassword,
             date_registered: new Date()
@@ -44,8 +42,6 @@ router.post("/signup", async (req, res) => {
         if (error.name === 'SequelizeUniqueConstraintError') {
             if (error.errors[0].path === 'email_UNIQUE') {
                 res.status(400).json({ errorMessage: "Someone is already registered with this email."})
-            } else if (error.errors[0].path === 'handle_UNIQUE') {
-                res.status(400).json({ errorMessage: 'This username handle has been taken. Try a different username.' });
             } else {
                 res.status(400).json({ errorMessage: "Internal server error."})
             }

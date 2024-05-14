@@ -4,16 +4,11 @@ import { Link } from 'react-router-dom';
 
 // Signup Page
 const Signup = () => {
-    const [ username, setUsername ] = useState('');
     const [ email, setEmail ] = useState('');
     const [ password1, setPassword1 ] = useState('');
     const [ password2, setPassword2 ] = useState('');
     
     const {signup, error, isLoading} = useSignup();
-
-    const handleUsernameChange = (e) => {
-        setUsername(e.target.value);
-    };
 
     const handleEmailChange = (e) => {
         setEmail(e.target.value);
@@ -30,8 +25,9 @@ const Signup = () => {
     const submitForm = async (e) => {
         e.preventDefault();
 
-        await signup(username, email, password1, password2);
+        await signup(email, password1, password2);
     }
+
     return (
         <div className="container">
             <div className="row justify-content-center mt-5">
@@ -43,10 +39,6 @@ const Signup = () => {
                             <div className="mb-3">
                                 <label htmlFor="email" className="form-label" >Email</label>
                                 <input type="email" className="form-control" id="email" placeholder="Email" onChange={handleEmailChange} required />
-                            </div>
-                            <div className="mb-3">
-                                <label htmlFor="username" className="form-label">Username</label>
-                                <input type="text" className="form-control" id="username" placeholder="Username" onChange={handleUsernameChange} required />
                             </div>
                             <div className="mb-3">
                                 <label htmlFor="password" className="form-label">Password</label>

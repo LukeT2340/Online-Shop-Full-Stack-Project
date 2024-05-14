@@ -6,30 +6,15 @@ export const useSignup = () => {
     const [isLoading, setIsLoading] = useState(null);
     const { dispatch } = useAuthContext();
 
-    const signup = async(username, email, password1, password2) => {
+    const signup = async(email, password1, password2) => {
         setIsLoading(true);
         setError(null);
 
-        const trimmedUsername = username.trim();
         const trimmedEmail = email.trim();
         const trimmedPassword1 = password1.trim();
         const trimmedPassword2 = password2.trim();
-        const usernameRegex = /^[a-zA-Z0-9]*$/;
         const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
-        // Handle username not long enough
-        if (trimmedUsername.length < 5) {
-            setError("Usernames must be five or more characters.");
-            setIsLoading(false);
-            return;
-        }
-
-        // Handle username contains special characters
-        if (!usernameRegex.test(trimmedUsername)) {
-            setError("Usernames must only contain letters and numbers.");
-            setIsLoading(false);
-            return;
-        }
 
         // Handle passwords don't match
         if (trimmedPassword1 !== trimmedPassword2) {
@@ -46,9 +31,8 @@ export const useSignup = () => {
         }
 
         const userData = {
-            username: trimmedUsername,
+            email: trimmedEmail,
             password: trimmedPassword1,
-            email: trimmedEmail
         };
 
         const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/user/signup`, {
