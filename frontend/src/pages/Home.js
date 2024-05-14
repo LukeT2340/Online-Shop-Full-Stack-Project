@@ -17,7 +17,6 @@ const Home = () => {
             {categories && categories.map((category, index) => (
                 <React.Fragment key={category.id}>
                     <CategoryPreview category={category} />
-                    {index !== categories.length - 1 && <hr className="my-4" />} 
                 </React.Fragment>
             ))}
         </div>
