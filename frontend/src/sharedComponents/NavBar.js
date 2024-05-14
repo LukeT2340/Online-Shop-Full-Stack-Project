@@ -23,24 +23,26 @@ const NavBar = () => {
     return (
         <Navbar expand="lg" className="bg-body-tertiary" expanded={expanded}>
             <div className="container">
-                <Link className="navbar-brand" to="/home" onClick={() => setExpanded(false)}>Yeeica</Link>
+                <Link className="navbar-brand py-0 mb-2" to="/home" onClick={() => setExpanded(false)}>
+                    <img src='Branding.png' style={{ width: '2.8em' }} alt="Logo" />
+                </Link>
                 <Navbar.Toggle aria-controls="navbarSupportedContent" onClick={() => setExpanded(!expanded)} />
                 <Navbar.Collapse id="navbarSupportedContent">
                     <ul className="navbar-nav mr-auto">
                         <li className="nav-item">
-                            <Link className="nav-link" to="/home" onClick={handleLinkClick}>Home</Link>
+                            <Link className="nav-link text-dark" to="/home" onClick={handleLinkClick}>Home</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="/home" onClick={handleLinkClick}>Explore</Link>
+                            <Link className="nav-link text-dark" to="/home" onClick={handleLinkClick}>Explore</Link>
                         </li>
                     </ul>
                     {user ? (
                         <div className="navbar-nav">
-                            <Link className="nav-link" to="/orders" onClick={handleLinkClick} style={{ display: 'flex', alignItems: 'center' }}>
+                            <Link className="nav-link text-dark" to="/orders" onClick={handleLinkClick} style={{ display: 'flex', alignItems: 'center' }}>
                                 <p style={{ marginRight: '0.5rem', marginBottom: '0' }}>Orders</p>
                                 <FaClipboardList />
                             </Link>
-                            <Link className="nav-link" to="/cart" onClick={handleLinkClick} style={{ display: 'flex', alignItems: 'center' }}>
+                            <Link className="nav-link text-dark" to="/cart" onClick={handleLinkClick} style={{ display: 'flex', alignItems: 'center' }}>
                                 <p style={{ marginRight: '0.5rem', marginBottom: '0' }}>Cart</p>
                                 <FaShoppingCart />
                             </Link>
