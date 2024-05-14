@@ -29,6 +29,27 @@ router.post("/signup", async (req, res) => {
     const userData = req.body;
     const { password, email } = userData;
     try {
+
+        // Railway isn't letting me create an email field that must be unique, so I'm manually checking whether the email exists
+        const existingUser = await User.findOne({
+            where: {
+                email: email
+            }
+        })
+
+        if (existingUser) {
+            throw new Error(
+                {
+                    name: 'SequelizeUniqueConstraintError',
+                    errors: [
+                        {
+                            path: 'email_UNIQUE'
+                        }
+                    ]
+                }
+            )
+        }
+
         const hashedPassword = await hashPassword(password);
         const user = await User.create({
             email: email,
