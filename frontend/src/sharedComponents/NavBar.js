@@ -50,8 +50,8 @@ const NavBar = () => {
                         </div>
                     ) : (
                         <div className="navbar-nav">
-                            <Link className="nav-link" to="/login" onClick={handleLinkClick}>Log in</Link>
-                            <Link className="nav-link" to="/signup" onClick={handleLinkClick}>Sign up</Link>
+                            <Link className="nav-link text-dark" to="/login" onClick={handleLinkClick}>Log in</Link>
+                            <Link className="nav-link text-dark" to="/signup" onClick={handleLinkClick}>Sign up</Link>
                         </div>
                     )}
                 </Navbar.Collapse>
