@@ -36,9 +36,8 @@ router.post("/signup", async (req, res) => {
                 email: email
             }
         })
-
         if (existingUser) {
-            throw new Error(
+            throw (
                 {
                     name: 'SequelizeUniqueConstraintError',
                     errors: [
@@ -60,6 +59,7 @@ router.post("/signup", async (req, res) => {
 
         res.status(200).json({ user_id: user.id, email: user.email, token: token });
     } catch (error) {
+        console.log(error);
         if (error.name === 'SequelizeUniqueConstraintError') {
             if (error.errors[0].path === 'email_UNIQUE') {
                 res.status(400).json({ errorMessage: "Someone is already registered with this email."})
