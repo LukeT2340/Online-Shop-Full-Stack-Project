@@ -91,7 +91,7 @@ router.post("/login", async (req, res) => {
 
         // Create JWT token
         const token = createToken(user.id);
-
+        console.log(`User "${user.email}" logged in to your site.`)
         res.status(200).json({ user_id: user.id, email: user.email, token: token });
     } catch (error) {
         console.error(error); // Log the error

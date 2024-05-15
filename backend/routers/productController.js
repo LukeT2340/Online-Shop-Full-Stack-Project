@@ -10,7 +10,7 @@ router.use(bodyParser.json());
 // Get several features products
 router.get('/featured', async (req, res) => {
     const limit = req.query.limit ? parseInt(req.query.limit) : 20;
-
+    console.log(`${req.ip} visited your site.`)
     try {
         const products = await Product.findAll({ 
             limit: limit < 21 ? limit : 20,
