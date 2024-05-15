@@ -42,7 +42,7 @@ const Login = () => {
                                     {error}
                                 </div>
                             )}
-                            <button disabled={isLoading} type="submit" className="btn btn-primary btn-block">Login</button>
+                            <button disabled={isLoading} type="submit" className="btn btn-info btn-block">Login</button>
                         </form>
                         <p>Don't have an account? <Link to="/signup">Sign up</Link></p>
                     </div>

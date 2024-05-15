@@ -2,7 +2,7 @@ const ProductInfo = ( {product} ) => {
     return (
         <div className="col-md-6">
             <div className="card-body pt-0">
-                <h3 className="card-title">{product.name}</h3>
+                <h3 className="card-title fw-lighter">{product.name}</h3>
                 <div className=" d-flex">
                     <div className="star-rating">
                         {[...Array(Math.floor(product.rating))].map((_, index) => (

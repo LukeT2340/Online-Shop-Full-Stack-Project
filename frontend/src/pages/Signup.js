@@ -34,7 +34,7 @@ const Signup = () => {
                 <div className="col-md-6">
                     <div className="card">
                         <div className="card-body">
-                            <h1 className="card-title text-center mb-4">Sign Up</h1>
+                            <h1 className="text-center mb-4">Sign Up</h1>
                             <form onSubmit={submitForm}>
                                 <div className="mb-3">
                                     <label htmlFor="email" className="form-label">Email</label>
@@ -53,7 +53,7 @@ const Signup = () => {
                                         {error}
                                     </div>
                                 )}
-                                <button disabled={isLoading} type="submit" className="btn btn-primary btn-block">Sign Up</button>
+                                <button disabled={isLoading} type="submit" className="btn btn-info btn-block">Sign Up</button>
                             </form>
                             <p className="text-center mt-3">Already have an account? <Link to="/login">Log In</Link></p>
                         </div>
