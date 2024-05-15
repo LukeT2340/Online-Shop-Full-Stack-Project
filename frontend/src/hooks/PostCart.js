@@ -33,7 +33,8 @@ export const PostCart = () => {
             // Handle unsuccessful fetch
             if (!response.ok) {
                 const errorData = await response.json();
-                throw new Error(errorData.errorMessage || 'Unknown server error. Please try again later.');
+                setError(errorData.message);
+                return;
             }
 
             // Handle successful fetch

@@ -32,13 +32,18 @@ router.post('/add', async (req, res) => {
             where: { product_id: productId, user_id: userId}
         })
 
+        // Check if product exists or not
+        if (!product) {
+            return res.status(400).json({ message: 'Product not found.'})
+        }
+
         // If the user has an existing cart with this item, update it
         if (cart) {
             const requestedQuantity = quantity + cart.quantity;
 
-            // Check if the product exists and if the requested quantity is available
-            if (!product || requestedQuantity > product.quantity_available) {
-                return res.status(400).json({ error: `Insufficient quantity available for product ${productId}` });
+            // Check if the requested quantity is available
+            if (requestedQuantity > product.quantity_available) {
+                return res.status(400).json({ message: `You already have ${cart.quantity} in your cart. Adding ${quantity} more to your cart exceeds the amount in stock.` });
             }
 
             // Update cart quantity and save changes
@@ -51,7 +56,7 @@ router.post('/add', async (req, res) => {
 
         // Check if the product exists and if the requested quantity is available
         if (!product || product.quantity_available < quantity) {
-            return res.status(400).json({ error: `Insufficient quantity available for product ${productId}` });
+            return res.status(400).json({ message: `Insufficient quantity available for product ${productId}` });
         }
 
         // Add the product to the user's cart
@@ -66,7 +71,7 @@ router.post('/add', async (req, res) => {
         res.status(201).json({ message: 'Product added to cart successfully', cart_item: newCartItem });
     } catch (error) {
         console.error('Error adding to cart:', error);
-        res.status(500).json({ error: 'Internal server error' });
+        res.status(500).json({ message: 'Internal server error' });
     }
 });
 
@@ -83,7 +88,7 @@ router.get('/get', async (req, res) => {
         res.json(cartEntries); 
     } catch (error) {
         console.error('Error retrieving cart:', error);
-        res.status(500).json({ error: 'Internal server error' });
+        res.status(500).json({ message: 'Internal server error' });
     }
 })
 

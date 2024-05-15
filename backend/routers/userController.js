@@ -36,6 +36,7 @@ router.post("/signup", async (req, res) => {
                 email: email
             }
         })
+        
         if (existingUser) {
             throw (
                 {

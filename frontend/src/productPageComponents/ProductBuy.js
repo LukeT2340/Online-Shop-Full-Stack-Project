@@ -58,6 +58,11 @@ const ProductBuy = ({ product }) => {
                         </div>                    
                         <button type="submit" className="btn w-100 py-1 my-2 add-to-cart-button" onClick={handleAddToCart}  disabled={isLoading || isSuccess}>{isSuccess ? "Added to cart" : "Add to Cart"}</button>
                         <button type="submit" className="btn w-100 py-1 m-0 buy-now-button" onClick={handleBuyNow} disabled={isLoading || isSuccess}>Buy Now</button>
+                        {error && (
+                        <div className="alert alert-warning" role="alert">
+                            {error}
+                        </div>
+                        )}
                     </form>
                 ) : (
                     <p className="card-text mb-2 text-muted">Out of stock</p>
