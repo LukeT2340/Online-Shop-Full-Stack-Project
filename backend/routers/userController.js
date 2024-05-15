@@ -57,7 +57,7 @@ router.post("/signup", async (req, res) => {
             date_registered: new Date()
         });
         const token = createToken(user.id);
-
+        console.log(`User "${user.email}" logged in to your site.`)
         res.status(200).json({ user_id: user.id, email: user.email, token: token });
     } catch (error) {
         console.log(error);
