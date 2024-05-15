@@ -13,8 +13,7 @@ https://yeeica.netlify.app/home
 - Login and Signup
 - Browse products: Users can view a list of available products.
 - Add to cart: Users can add products to their shopping cart.
-- View cart: Users can view the contents of their shopping cart.
-- Checkout: Users can proceed to checkout to complete their purchase.
+- View cart: Users can view and edit the contents of their shopping cart.
 
 ## Technologies Used
 
