@@ -14,6 +14,8 @@ const CategoryPreview = ( {category} ) => {
         <div className='col p-0 m-0'>
             { products && products.length > 0 && (
                 <>
+                <hr className="my-4" />
+
             <div className="row mx-3 mt-3">
                 <h6 style={{ fontSize: '1.3rem', color: '#333' }}>{category.name}</h6>
                 <Link className="ml-auto" to={`/${category.name}`}>See all</Link>
@@ -37,8 +39,6 @@ const CategoryPreview = ( {category} ) => {
                     </div>
                 )}
             </div>
-            <hr className="my-4" />
-
             </>
             )}
         </div>

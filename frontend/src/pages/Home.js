@@ -13,7 +13,6 @@ const Home = () => {
     return (
         <div className="container">
             <Featured />
-            <hr className="my-4" />
             {categories && categories.map((category, index) => (
                 <React.Fragment key={category.id}>
                     <CategoryPreview category={category} />
