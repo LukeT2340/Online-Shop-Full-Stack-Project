@@ -8,7 +8,11 @@ const Search = () => {
 
     return (
         <div className='container mt-3'>
-            <h3>Search results for '{text}'</h3>
+            {results && results.length > 0 ? 
+                <h3>Search results for '{text}'</h3>
+            :
+                <h3>No search results for '{text}'</h3>
+            }
             <div className='row'>
                 {results && results.map((product) => (
                     <ProductCard product={product}/>
