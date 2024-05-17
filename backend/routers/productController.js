@@ -3,6 +3,8 @@ const express = require('express');
 const router = express.Router();
 const bodyParser = require('body-parser'); 
 const Product = require('../models/Product');
+const { Op } = require('sequelize');
+const { Sequelize } = require('sequelize');
 
 // All recieved data is converted to JSON format
 router.use(bodyParser.json()); 
@@ -73,6 +75,31 @@ router.get('/category', async (req, res) => {
     }
 });
 
+// Search products
+router.get('/search', async (req, res) => {
+    const text = req.query.text.trim();
+
+    if (!text) {
+        return res.status(400).json({ error: "No search text provided" });
+    }
+
+    try {
+        // Perform case-insensitive search using Sequelize
+        const products = await Product.findAll({
+            where: {
+                [Op.or]: [
+                    Sequelize.where(Sequelize.fn('LOWER', Sequelize.col('name')), 'LIKE', `%${text.toLowerCase()}%`),
+                    Sequelize.where(Sequelize.fn('LOWER', Sequelize.col('description')), 'LIKE', `%${text.toLowerCase()}%`)
+                ]
+            }
+        });
+
+        res.json(products);
+    } catch (error) {
+        console.error("Error searching for products:", error);
+        res.status(500).json({ error: "Internal server error" });
+    }
+});
 
 module.exports = router;
 

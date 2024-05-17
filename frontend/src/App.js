@@ -5,6 +5,7 @@ import Login from './pages/Login.js';
 import Home from './pages/Home.js';
 import About from './pages/About.js';
 import Explore from './pages/Explore.js';
+import Search from './pages/Search.js';
 import Cart from './pages/Cart.js';
 import ProductDetails from './pages/ProductDetails.js';
 import CustomNavBar from './sharedComponents/NavBar.js';
@@ -26,6 +27,7 @@ function App() {
             <Route path="/featured" element={<Featured />} />
             <Route path="/product/:productId" element={<ProductDetails />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/search/:text" element={<Search />} />
 
             {user ? (
               <>

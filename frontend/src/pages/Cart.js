@@ -13,7 +13,7 @@ const Cart = () => {
     }
 
     return (
-        <div className='container justify-content-center align-items-center'>
+        <div className='container justify-content-center align-items-center mt-3'>
             <div className="row d-flex mb-3 align-items-center mx-3">
                 <h6 className="mr-auto ml-3 mt-auto mb-auto" style={{ fontSize: '1.3rem', color: '#333' }}>My cart</h6>
                 {isLoading && <p>Loading...</p>}

@@ -5,19 +5,31 @@ import './NavBar.css';
 import { FaHome, FaBook, FaFire, FaSearch, FaUser, FaComment, FaBell, FaShoppingCart } from "react-icons/fa";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { useLogout } from "../hooks/useLogout";
-
+import { useNavigate } from 'react-router';
+import { useState } from 'react';
 
 const CustomNavbar = () => {
+    const [searchText, setSearchText] = useState(null);
     const { user } = useAuthContext();
     const { logout } = useLogout();
+    const navigate = useNavigate();
 
     const handleLogout = () => {
         logout();
         window.location.reload();
     }
 
+    const handleSearchTextChange = (e) => {
+        setSearchText(e.target.value);
+    }
+
+    const handleSearchSubmit = (e) => {
+        e.preventDefault();
+        navigate(`/search/${searchText}`);
+    }
+
     return (
-        <Navbar variant="light border-bottom" expand="lg">
+        <Navbar variant="light border" expand="lg">
             <Navbar.Brand href="/home" className='mx-3'>Yeeica</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" className='mx-3'/>
           <Navbar.Collapse id="basic-navbar-nav" className="d-flex justify-content-between mx-3">
@@ -26,7 +38,7 @@ const CustomNavbar = () => {
                     <FaHome size={18} className="mr-1" /> Home
                 </Nav.Link>
                 <Nav.Link href="/topselling" className="d-flex align-items-center mr-3">
-                    <FaFire size={18} className="mr-1" /> Popular
+                    <FaFire size={18} className="mr-1" style={{color: 'rgb(var(--accent-color))'}}/> Popular
                 </Nav.Link>
 
                 <Nav.Link href="/notifications" className="d-lg-none d-flex align-items-center">
@@ -34,8 +46,8 @@ const CustomNavbar = () => {
                 </Nav.Link>
 
                 {/* Show search bar on larger screens */}
-                <Form inline className="d-none d-lg-flex ms-3" style={{width: '280px'}}>
-                    <FormControl type="text" placeholder="Search Yeecia" className="mr-lg-2" />
+                <Form inline className="d-none d-lg-flex ms-3" style={{width: '280px'}} onSubmit={handleSearchSubmit}>
+                    <FormControl type="text" placeholder="Search Yeecia" className="mr-lg-2" value={searchText} onChange={handleSearchTextChange} />
                 </Form>
             </Nav>
 
