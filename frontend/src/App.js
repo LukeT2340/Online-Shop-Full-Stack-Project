@@ -7,7 +7,7 @@ import About from './pages/About.js';
 import Explore from './pages/Explore.js';
 import Cart from './pages/Cart.js';
 import ProductDetails from './pages/ProductDetails.js';
-import NavBar from './sharedComponents/NavBar.js';
+import CustomNavBar from './sharedComponents/NavBar.js';
 import React, { useState } from 'react';
 import { useAuthContext } from "./hooks/useAuthContext";
 import Featured from "./pages/Featured.js";
@@ -17,29 +17,31 @@ function App() {
 
   return (
     <Router>
-        <NavBar />
-        <Routes> 
-          <Route path="/home" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/explore" element={<Explore />} />
-          <Route path="/featured" element={<Featured />} />
-          <Route path="/product/:productId" element={<ProductDetails />} />
-          <Route path="/cart" element={<Cart />} />
+        <CustomNavBar />
+        <div className='d-flex justify-content-center align-items-center'>
+          <Routes> 
+            <Route path="/home" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/explore" element={<Explore />} />
+            <Route path="/featured" element={<Featured />} />
+            <Route path="/product/:productId" element={<ProductDetails />} />
+            <Route path="/cart" element={<Cart />} />
 
-          {user ? (
-            <>
-              <Route path="/signup" element={<Navigate to="/home" />} />
-              <Route path="/login" element={<Navigate to="/home" />} />
-            </>
-          ) : (
-            <>
-              <Route path="/signup" element={<Signup />} />
-              <Route path="/login" element={<Login />} />
-            </>
-          )}
+            {user ? (
+              <>
+                <Route path="/signup" element={<Navigate to="/home" />} />
+                <Route path="/login" element={<Navigate to="/home" />} />
+              </>
+            ) : (
+              <>
+                <Route path="/register" element={<Signup />} />
+                <Route path="/login" element={<Login />} />
+              </>
+            )}
 
-          <Route path="*" element={<Navigate to="/home" />} /> 
-        </Routes>
+            <Route path="*" element={<Navigate to="/home" />} /> 
+          </Routes>
+        </div>
     </Router>
   );
 }

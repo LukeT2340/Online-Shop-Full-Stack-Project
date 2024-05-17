@@ -1,0 +1,34 @@
+.username {
+    font-weight: bold;
+  }
+
+.login-button {
+  background-color: rgb(var(--accent-color));
+  border-radius: 5px;
+  color: white !important;
+  padding-block: 8px;
+  max-width: 20rem;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.login-button:hover {
+  color: white;
+  background-color: rgba(var(--accent-color), 0.8);
+}
+
+.signup-button {
+  border-radius: 5px;
+}
+
+.signup-button:hover {
+  background-color: rgba(var(--accent-color), 0.2);
+}
+
+.hamburger-login-button {
+  background-color: rgb(var(--accent-color));
+  border-radius: 5px;
+  color: white;
+  padding: 10px;
+  max-width: 20rem;
+}
+

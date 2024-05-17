@@ -6,25 +6,17 @@ export const useSignup = () => {
     const [isLoading, setIsLoading] = useState(null);
     const { dispatch } = useAuthContext();
 
-    const signup = async(email, password1, password2) => {
+    const signup = async(email, password) => {
         setIsLoading(true);
         setError(null);
 
         const trimmedEmail = email.trim();
-        const trimmedPassword1 = password1.trim();
-        const trimmedPassword2 = password2.trim();
+        const trimmedPassword = password.trim();
         const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
 
-        // Handle passwords don't match
-        if (trimmedPassword1 !== trimmedPassword2) {
-            setError("Passwords don't match");
-            setIsLoading(false);
-            return;
-        }
-
         // Handle username doesn't meet complexity requirements
-        if (!passwordRegex.test(trimmedPassword1)) {
+        if (!passwordRegex.test(trimmedPassword)) {
             setError("Your password must contain at least one lowercase letter, one uppercase letter, one digit, one special character, and be at least 8 characters long.");
             setIsLoading(false);
             return;
@@ -32,7 +24,7 @@ export const useSignup = () => {
 
         const userData = {
             email: trimmedEmail,
-            password: trimmedPassword1,
+            password: trimmedPassword,
         };
 
         const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/user/signup`, {

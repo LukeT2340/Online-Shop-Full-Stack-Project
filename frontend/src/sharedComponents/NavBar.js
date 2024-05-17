@@ -1,76 +1,91 @@
-import { useEffect, useState } from 'react';
-import { useLogout } from "../hooks/useLogout";
+// Navbar.js
+import React from 'react';
+import { Navbar, Nav, NavDropdown, Form, FormControl, Button } from 'react-bootstrap';
+import './NavBar.css';
+import { FaHome, FaBook, FaFire, FaSearch, FaUser, FaComment, FaBell } from "react-icons/fa";
 import { useAuthContext } from "../hooks/useAuthContext";
-import { Link } from 'react-router-dom';
-import { FaShoppingCart, FaClipboardList } from 'react-icons/fa'; 
-import Dropdown from 'react-bootstrap/Dropdown';
-import "bootstrap/js/src/collapse.js";
-import Navbar from 'react-bootstrap/Navbar';
+import { useLogout } from "../hooks/useLogout";
 
-const NavBar = () => {
-    const { logout } = useLogout();
+
+const CustomNavbar = () => {
     const { user } = useAuthContext();
-    const [expanded, setExpanded] = useState(false);
+    const { logout } = useLogout();
 
     const handleLogout = () => {
         logout();
-    };
-
-    const handleLinkClick = () => {
-        setExpanded(false); // Close the navbar when a link is clicked
-    };
+        window.location.reload();
+    }
 
     return (
-        <Navbar expand="lg" className="bg-body-tertiary" expanded={expanded}>
-            <div className="container">
-                <Link className="nav-item mr-3 my-auto pb-2" to="/home" onClick={() => setExpanded(false)}>
-                    <img src='/Branding.png' style={{ width: '3.9rem' }} alt="Logo" />
-                </Link>
-                <Navbar.Toggle aria-controls="navbarSupportedContent" onClick={() => setExpanded(!expanded)} />
-                <Navbar.Collapse id="navbarSupportedContent">
-                    <ul className="navbar-nav mr-auto">
-                        <li className="nav-item">
-                            <Link className="nav-link text-dark" to="/home" onClick={handleLinkClick}>Home</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link className="nav-link text-dark" to="/home" onClick={handleLinkClick}>Explore</Link>
-                        </li>
-                    </ul>
-                    {user ? (
-                        <div className="navbar-nav">
-                            <Link className="nav-link text-dark" to="/orders" onClick={handleLinkClick} style={{ display: 'flex', alignItems: 'center' }}>
-                                <p style={{ marginRight: '0.5rem', marginBottom: '0' }}>Orders</p>
-                                <FaClipboardList />
-                            </Link>
-                            <Link className="nav-link text-dark" to="/cart" onClick={handleLinkClick} style={{ display: 'flex', alignItems: 'center' }}>
-                                <p style={{ marginRight: '0.5rem', marginBottom: '0' }}>Cart</p>
-                                <FaShoppingCart />
-                            </Link>
-                            <button className="btn btn-link" onClick={handleLogout}>Logout</button>
-                        </div>
-                    ) : (
-                        <div className="navbar-nav">
-                            <Link className="nav-link text-dark" to="/login" onClick={handleLinkClick}>Log in</Link>
-                            <Link className="nav-link text-dark" to="/signup" onClick={handleLinkClick}>Sign up</Link>
-                        </div>
-                    )}
-                </Navbar.Collapse>
+        <Navbar variant="light border-bottom" expand="lg">
+            <Navbar.Brand href="/home" className='mx-3'>Yeeica</Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" className='mx-3'/>
+          <Navbar.Collapse id="basic-navbar-nav" className="d-flex justify-content-between mx-3">
+            <Nav className="d-flex align-items-left">
+                <Nav.Link href="/home" className="d-flex align-items-center">
+                    <FaHome size={18} className="me-1" /> Home
+                </Nav.Link>
+                <Nav.Link href="/topselling" className="d-flex align-items-center mr-3">
+                    <FaFire size={18} className="me-1" /> Popular
+                </Nav.Link>
+
+                <Nav.Link href="/notifications" className="d-lg-none d-flex align-items-center">
+                    <FaBell size={18} className="me-1" /> Notifications
+                </Nav.Link>
+
+                {/* Show search bar on larger screens */}
+                <Form inline className="d-none d-lg-flex ms-3" style={{width: '280px'}}>
+                    <FormControl type="text" placeholder="Search Yeecia" className="mr-lg-2" />
+                </Form>
+            </Nav>
+
+            {/* Smaller screen search and login button */}
+            <div className='d-lg-none d-flex col-flex'>
+                <div className="d-flex flex-column">
+                    <Button variant="secondary" className="">
+                        <FaSearch /> Search
+                    </Button>
+                    <Nav.Link href="/login" className='login-button px-3 mt-2'><FaUser /> Login / Signup</Nav.Link>
+                </div>
             </div>
+
+
+            {/* Show login button on larger screens */}
+            <Nav className="d-none d-lg-flex col-md-3 justify-content-end ml-auto">
+                {user ? (
+                    <>
+                        <Nav.Link href="/notifications" className="d-flex align-items-center">
+                            <FaBell size={18} className="me-1" /> Notifications
+                        </Nav.Link>
+                        <Nav.Link href="/messages" className="d-flex align-items-center pl-3">
+                            <FaComment size={18} className="me-1" /> Messages
+                        </Nav.Link>
+                        <Button className='btn navbar-button login-button mx-3' onClick={handleLogout}>Logout</Button>
+                    </>
+                ) :
+                (
+                    <>
+                        <Nav.Link href="/login" className='btn navbar-button login-button'>Login</Nav.Link>
+                        <Nav.Link href="/register" className='signup-button mx-3'>Signup</Nav.Link>
+                    </>
+                )}
+            </Nav>
+          </Navbar.Collapse>
         </Navbar>
-    );
+      );
+    
 };
 
-export default NavBar;
+export default CustomNavbar;
+
 
 /*
-                        <Dropdown className="nav-item">
-                            <Dropdown.Toggle variant="none" id="dropdown-basic" onClick={handleLinkClick}>
-                                Categories
-                            </Dropdown.Toggle>
-                            <Dropdown.Menu>
-                                <Dropdown.Item href="#/action-1">Makeup</Dropdown.Item>
-                                <Dropdown.Item href="#/action-2">Skincare</Dropdown.Item>
-                                <Dropdown.Item href="#/action-3">Accessories</Dropdown.Item>
-                            </Dropdown.Menu>
-                        </Dropdown>
+
+<NavDropdown title="more">
+<NavDropdown.Item href="#action/3.1">Pics</NavDropdown.Item>
+<NavDropdown.Item href="#action/3.2">Videos</NavDropdown.Item>
+<NavDropdown.Divider />
+<NavDropdown.Item href="#action/3.4">More...</NavDropdown.Item>
+</NavDropdown>
+
 */

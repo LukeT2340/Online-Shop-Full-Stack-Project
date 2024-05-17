@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { useSignup } from '../hooks/useSignup';
 import { Link } from 'react-router-dom';
+import { Container, Form, Button, Alert } from 'react-bootstrap';
+import { FaGoogle, FaApple } from 'react-icons/fa';
+import "../styles/Signup.css";
 
 // Signup Page
 const Signup = () => {
     const [ email, setEmail ] = useState('');
-    const [ password1, setPassword1 ] = useState('');
-    const [ password2, setPassword2 ] = useState('');
+    const [ password, setPassword ] = useState('');
     
     const {signup, error, isLoading} = useSignup();
 
@@ -14,53 +16,82 @@ const Signup = () => {
         setEmail(e.target.value);
     };
 
-    const handlePassword1Change = (e) => {
-        setPassword1(e.target.value);
-    };
-
-    const handlePassword2Change = (e) => {
-        setPassword2(e.target.value);
+    const handlePasswordChange = (e) => {
+        setPassword(e.target.value);
     };
 
     const submitForm = async (e) => {
         e.preventDefault();
 
-        await signup(email, password1, password2);
+        await signup(email, password);
     }
 
     return (
-        <div className="container mt-5">
-            <div className="row justify-content-center">
-                <div className="col-md-6">
-                    <div className="card">
-                        <div className="card-body">
-                            <h1 className="text-center mb-4">Sign Up</h1>
-                            <form onSubmit={submitForm}>
-                                <div className="mb-3">
-                                    <label htmlFor="email" className="form-label">Email</label>
-                                    <input type="email" className="form-control" id="email" placeholder="Email" onChange={handleEmailChange} required />
-                                </div>
-                                <div className="mb-3">
-                                    <label htmlFor="password1" className="form-label">Password</label>
-                                    <input type="password" className="form-control" id="password1" placeholder="Password" onChange={handlePassword1Change} required />
-                                </div>
-                                <div className="mb-3">
-                                    <label htmlFor="password2" className="form-label">Confirm Password</label>
-                                    <input type="password" className="form-control" id="password2" placeholder="Confirm password" onChange={handlePassword2Change} required />
-                                </div>
-                                {error && (
-                                    <div className="alert alert-warning" role="alert">
-                                        {error}
-                                    </div>
-                                )}
-                                <button disabled={isLoading} type="submit" className="btn btn-info btn-block">Sign Up</button>
-                            </form>
-                            <p className="text-center mt-3">Already have an account? <Link to="/login">Log In</Link></p>
+        <Container className="login-outer-container d-flex justify-content-center align-items-center">
+            <div className="login-box border shadow p-5">
+                <div className='row'>
+                    <h2 className="mb-4 mx-auto">Register</h2> {/* Form title */}
+                </div>
+                <Form onSubmit={submitForm}>
+
+                    {/* Sign in with Google */}
+                    <Button variant="light" className="w-100 mb-2">
+                        <FaGoogle className="me-2" /> Sign up with Google
+                    </Button>
+
+                    {/* Sign in with Apple */}
+                    <Button variant="light" className="w-100">
+                        <FaApple className="me-2" /> Sign up with Apple
+                    </Button>
+
+                    <div className="row justify-content-center align-items-center my-3">
+                        <div className="col">
+                            <hr className="w-100"></hr>
+                        </div>
+                        <div className="col-auto">
+                            <span className="mx-1">OR</span>
+                        </div>
+                        <div className="col">
+                            <hr className="w-100"></hr>
                         </div>
                     </div>
-                </div>
+
+                    <Form.Group controlId="formBasicEmail" className='my-2'>
+                        <Form.Label>Email address</Form.Label>
+                        <Form.Control 
+                            type="email" 
+                            placeholder="Enter email" 
+                            value={email} 
+                            onChange={handleEmailChange} 
+                            required 
+                        />
+                    </Form.Group>
+
+                    <Form.Group controlId="formBasicPassword" className='my-2'>
+                        <Form.Label>Password</Form.Label>
+                        <Form.Control 
+                            type="password" 
+                            placeholder="Password" 
+                            value={password} 
+                            onChange={handlePasswordChange} 
+                            required 
+                        />
+                    </Form.Group>
+
+                    <div className='row'>
+                        <Button type="submit" className="login-button w-100 mt-1 mb-3 mx-auto">
+                            {/* Show loading text when isLoading */}
+                            {/* {isLoading ? 'Logging in...' : 'Login'} */}
+                            Login
+                        </Button>
+                    </div>
+                </Form>
+                {error && (
+                    <p style={{ color: 'red', textAlign: 'left', 'font-size': '12px' }}>{error}</p>)
+                    } 
+                <p style={{ textAlign: 'left' }}>Already have an account? <Link to="/login">Login</Link></p>            
             </div>
-        </div>
+        </Container>
     );
 };
 
