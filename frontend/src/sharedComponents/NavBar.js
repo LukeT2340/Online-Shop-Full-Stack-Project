@@ -2,7 +2,7 @@
 import React from 'react';
 import { Navbar, Nav, NavDropdown, Form, FormControl, Button } from 'react-bootstrap';
 import './NavBar.css';
-import { FaHome, FaBook, FaFire, FaSearch, FaUser, FaComment, FaBell } from "react-icons/fa";
+import { FaHome, FaBook, FaFire, FaSearch, FaUser, FaComment, FaBell, FaShoppingCart } from "react-icons/fa";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { useLogout } from "../hooks/useLogout";
 
@@ -23,14 +23,14 @@ const CustomNavbar = () => {
           <Navbar.Collapse id="basic-navbar-nav" className="d-flex justify-content-between mx-3">
             <Nav className="d-flex align-items-left">
                 <Nav.Link href="/home" className="d-flex align-items-center">
-                    <FaHome size={18} className="me-1" /> Home
+                    <FaHome size={18} className="mr-1" /> Home
                 </Nav.Link>
                 <Nav.Link href="/topselling" className="d-flex align-items-center mr-3">
-                    <FaFire size={18} className="me-1" /> Popular
+                    <FaFire size={18} className="mr-1" /> Popular
                 </Nav.Link>
 
                 <Nav.Link href="/notifications" className="d-lg-none d-flex align-items-center">
-                    <FaBell size={18} className="me-1" /> Notifications
+                    <FaBell size={18} className="mr-1" /> Notifications
                 </Nav.Link>
 
                 {/* Show search bar on larger screens */}
@@ -55,7 +55,10 @@ const CustomNavbar = () => {
                 {user ? (
                     <>
                         <Nav.Link href="/notifications" className="d-flex align-items-center">
-                            <FaBell size={18} className="me-1" /> Notifications
+                            <FaBell size={18} className="mr-1" /> Notifications
+                        </Nav.Link>
+                        <Nav.Link href="/cart" className="d-flex align-items-center">
+                            <FaShoppingCart size={18} className="mr-1" /> Cart
                         </Nav.Link>
                         <Button className='btn navbar-button login-button mx-3' onClick={handleLogout}>Logout</Button>
                     </>
