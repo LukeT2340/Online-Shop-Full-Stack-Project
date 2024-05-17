@@ -1,15 +1,17 @@
-import { useEffect } from 'react';
-import { GetCart } from '../hooks/GetCart';
+import { useCart } from '../hooks/useCart';
 import CartEntry from '../cartPageComponents/CartEntry';
-import { Product } from '../hooks/Product';
 
 const Cart = () => {
-    const { getCart, cartEntries, isLoading, error } = GetCart(); // GetCart hook
+    const { cartEntries, isLoading, error } = useCart();
 
-    // Fetch cart (using API) when page loads
-    useEffect(() => {
-        getCart();
-    }, []); 
+    if (isLoading) {
+        return <div>Loading...</div>;
+    }
+
+    if (error) {
+        return <div>Error: {error}</div>;
+    }
+
     return (
         <div className='container justify-content-center align-items-center'>
             <div className="row d-flex mb-3 align-items-center mx-3">

@@ -1,4 +1,4 @@
-import { Product } from '../hooks/Product.js';
+import { useProduct } from '../hooks/useProduct';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -7,15 +7,10 @@ import { RemoveFromCart } from '../hooks/RemoveFromCart.js';
 import { UpdateCartQuantity } from '../hooks/UpdateCartQuantity.js';
 
 const CartEntry = ( {item} ) => {
-    const { getProduct, product, isLoading, error } = Product(); // Fetch product details hook
+    const { product, isLoading, error } = useProduct(item.product_id);
     const [ quantity, setQuantity ] = useState(item.quantity);
     const { removeFromCart, isDeleted } = RemoveFromCart();
     const { updateCartQuantity, isSuccess } = UpdateCartQuantity();
-
-    // Fetch product (using API) when page loads
-    useEffect(() => {
-        getProduct(item.product_id);
-    }, []); 
 
     // Handle quantity change
     const handleQuantityChange = async (newQuantity) => {
@@ -39,8 +34,6 @@ const CartEntry = ( {item} ) => {
                         style={{ objectFit: "contain", maxHeight: "200px"}} 
                         alt={product.name} 
                     />
-
-
 
                     <div className="col-md-8 d-flex flex-column mb-auto pt-3">
                         

@@ -1,14 +1,10 @@
 import ProductCard from '../sharedComponents/ProductCard.js';
 import React, { useEffect } from 'react';
-import { GetCategoryProducts } from '../hooks/GetCategoryProducts.js';
+import { useCategoryProducts } from '../hooks/useCategoryProducts';
 import { Link } from 'react-router-dom';
 
 const CategoryPreview = ( {category} ) => {
-    const { getCategoryProducts, products, isLoading, error } = GetCategoryProducts();
-
-    useEffect(() => {
-        getCategoryProducts(category.id, 6);
-    }, []);
+    const { products, isLoading, error } = useCategoryProducts(category.id, 6);
 
     return (
         <div className='col p-0 m-0'>
