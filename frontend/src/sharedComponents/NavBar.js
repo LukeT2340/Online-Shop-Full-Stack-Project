@@ -57,9 +57,6 @@ const CustomNavbar = () => {
                         <Nav.Link href="/notifications" className="d-flex align-items-center">
                             <FaBell size={18} className="me-1" /> Notifications
                         </Nav.Link>
-                        <Nav.Link href="/messages" className="d-flex align-items-center pl-3">
-                            <FaComment size={18} className="me-1" /> Messages
-                        </Nav.Link>
                         <Button className='btn navbar-button login-button mx-3' onClick={handleLogout}>Logout</Button>
                     </>
                 ) :
