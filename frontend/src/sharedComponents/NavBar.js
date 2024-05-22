@@ -1,7 +1,7 @@
 // Navbar.js
 import React from 'react';
 import { Navbar, Nav, NavDropdown, Form, FormControl, Button } from 'react-bootstrap';
-import './NavBar.css';
+import styles from './NavBar.module.css';
 import { FaHome, FaBook, FaFire, FaSearch, FaUser, FaComment, FaBell, FaShoppingCart } from "react-icons/fa";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { useLogout } from "../hooks/useLogout";
@@ -45,6 +45,10 @@ const CustomNavbar = () => {
                 <Nav.Link href="/notifications" className="d-lg-none d-flex align-items-center">
                     <FaBell size={18} className="mr-1" /> Notifications
                 </Nav.Link>
+                <Nav.Link href="/cart" className="d-lg-none d-flex align-items-center">
+                    <FaShoppingCart size={18} className="mr-1" /> Cart
+                </Nav.Link>
+                <Button className={`d-lg-none btn ${styles.loginButton} mx-3`} onClick={handleLogout}>Logout</Button>
 
                 {/* Show search bar on larger screens */}
                 <Form inline className="d-none d-lg-flex ms-3" style={{width: '280px'}} onSubmit={handleSearchSubmit}>
@@ -52,15 +56,17 @@ const CustomNavbar = () => {
                 </Form>
             </Nav>
 
-            {/* Smaller screen search and login button */}
-            <div className='d-lg-none d-flex col-flex'>
-                <div className="d-flex flex-column">
-                    <Nav.Link href="/login" className='login-button px-3 mt-2'><FaUser /> Login / Signup</Nav.Link>
+            {/* Smaller screen login button */}
+            {!user && (
+                <div className='d-lg-none d-flex col-flex'>
+                    <div className="d-flex flex-column">
+                        <Nav.Link href="/login" className={`${styles.hamburgerLoginButton} px-3 mt-2`}> Login / Signup</Nav.Link>
+                    </div>
                 </div>
-            </div>
+            )}
 
 
-            {/* Show login button on larger screens */}
+            {/* Larger screen login button and nav links */}
             <Nav className="d-none d-lg-flex col-md-3 justify-content-end ml-auto">
                 {user ? (
                     <>
@@ -70,13 +76,13 @@ const CustomNavbar = () => {
                         <Nav.Link href="/cart" className="d-flex align-items-center">
                             <FaShoppingCart size={18} className="mr-1" /> Cart
                         </Nav.Link>
-                        <Button className='btn navbar-button login-button mx-3' onClick={handleLogout}>Logout</Button>
+                        <Button className={`btn ${styles.logoutButton} mx-3`} onClick={handleLogout}>Logout</Button>
                     </>
                 ) :
                 (
                     <>
-                        <Nav.Link href="/login" className='btn navbar-button login-button'>Login</Nav.Link>
-                        <Nav.Link href="/register" className='signup-button mx-3'>Signup</Nav.Link>
+                        <Nav.Link href="/login" className={`${styles.loginButton}`}>Login</Nav.Link>
+                        <Nav.Link href="/register" className={`${styles.signupButton} mx-3`}>Signup</Nav.Link>
                     </>
                 )}
             </Nav>

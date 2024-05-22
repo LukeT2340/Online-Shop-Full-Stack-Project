@@ -1,0 +1,44 @@
+.username {
+    font-weight: bold;
+  }
+
+.loginButton {
+  background-color: rgb(var(--accent-color));
+  border-radius: 5px;
+  color: white !important;
+  padding-block: 8px;
+  max-width: 20rem;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logoutButton {
+  background-color: rgb(var(--accent-color));
+  border: none;
+  border-radius: 5px;
+  color: white !important;
+  padding-block: 8px;
+  max-width: 20rem;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.loginButton:hover {
+  color: white;
+  background-color: rgba(var(--accent-color), 0.8);
+}
+
+.signupButton {
+  border-radius: 5px;
+}
+
+.signupButton:hover {
+  background-color: rgba(var(--accent-color), 0.2);
+}
+
+.hamburgerLoginButton {
+  background-color: rgb(var(--accent-color));
+  border-radius: 5px;
+  color: white;
+  padding: 10px;
+  max-width: 20rem;
+}
+
