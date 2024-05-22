@@ -7,6 +7,7 @@ import { useAuthContext } from "../hooks/useAuthContext";
 import { useLogout } from "../hooks/useLogout";
 import { useNavigate } from 'react-router';
 import { useState } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const CustomNavbar = () => {
     const [searchText, setSearchText] = useState(null);
@@ -29,11 +30,11 @@ const CustomNavbar = () => {
     }
 
     return (
-        <Navbar variant="light border" expand="lg">
-            <Navbar.Brand href="/home" className='mx-3'>Yeeica</Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" className='mx-3'/>
-          <Navbar.Collapse id="basic-navbar-nav" className="d-flex justify-content-between mx-3">
-            <Nav className="d-flex align-items-left">
+        <Navbar data-bs-theme="light" className={`border-bottom`} expand='md'>
+            <Navbar.Brand href="/articles" className={`mx-3`}>Yeeica</Navbar.Brand>
+            <Navbar.Toggle aria-controls="basic-navbar-nav" className='mx-3' />
+            <Navbar.Collapse id="basic-navbar-nav" className="mx-3">
+            <Nav className="mr-auto">
                 <Nav.Link href="/home" className="d-flex align-items-center">
                     <FaHome size={18} className="mr-1" /> Home
                 </Nav.Link>
@@ -54,9 +55,6 @@ const CustomNavbar = () => {
             {/* Smaller screen search and login button */}
             <div className='d-lg-none d-flex col-flex'>
                 <div className="d-flex flex-column">
-                    <Button variant="secondary" className="">
-                        <FaSearch /> Search
-                    </Button>
                     <Nav.Link href="/login" className='login-button px-3 mt-2'><FaUser /> Login / Signup</Nav.Link>
                 </div>
             </div>
