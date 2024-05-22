@@ -48,7 +48,9 @@ const CustomNavbar = () => {
                 <Nav.Link href="/cart" className="d-lg-none d-flex align-items-center">
                     <FaShoppingCart size={18} className="mr-1" /> Cart
                 </Nav.Link>
-                <Button className={`d-lg-none btn ${styles.loginButton} mx-3`} onClick={handleLogout}>Logout</Button>
+                {user && (
+                    <Button className={`d-lg-none btn ${styles.hamburgerLogoutButton} mx-3`} onClick={handleLogout}>Logout</Button>
+                )}
 
                 {/* Show search bar on larger screens */}
                 <Form inline className="d-none d-lg-flex ms-3" style={{width: '280px'}} onSubmit={handleSearchSubmit}>

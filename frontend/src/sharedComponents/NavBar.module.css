@@ -3,7 +3,7 @@
   }
 
 .loginButton {
-  background-color: rgb(var(--accent-color));
+  background-color: rgb(var(--accent-color)) !important;
   border-radius: 5px;
   color: white !important;
   padding-block: 8px;
@@ -12,18 +12,18 @@
 }
 
 .logoutButton {
-  background-color: rgb(var(--accent-color));
-  border: none;
-  border-radius: 5px;
+  background-color: rgb(var(--accent-color)) !important;
+  border: none !important;
+  border-radius: 5px !important;
   color: white !important;
-  padding-block: 8px;
-  max-width: 20rem;
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  padding-block: 8px !important;
+  max-width: 20rem !important;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1) !important;
 }
 
 .loginButton:hover {
-  color: white;
-  background-color: rgba(var(--accent-color), 0.8);
+  color: white !important;
+  background-color: rgba(var(--accent-color), 0.8) !important;
 }
 
 .signupButton {
@@ -35,10 +35,19 @@
 }
 
 .hamburgerLoginButton {
-  background-color: rgb(var(--accent-color));
-  border-radius: 5px;
-  color: white;
-  padding: 10px;
-  max-width: 20rem;
+  background-color: rgb(var(--accent-color)) !important;
+  border-radius: 5px !important;
+  color: white !important;
+  padding: 10px !important;
+  max-width: 5rem !important;
+  border: none;
 }
 
+.hamburgerLogoutButton {
+  background-color: rgb(var(--accent-color)) !important;
+  border-radius: 5px !important;
+  color: white !important;
+  padding: 10px !important;
+  max-width: 5rem !important;
+  border: none;
+}
