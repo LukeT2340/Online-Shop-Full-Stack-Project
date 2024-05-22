@@ -62,7 +62,7 @@ const CustomNavbar = () => {
             {!user && (
                 <div className='d-lg-none d-flex col-flex'>
                     <div className="d-flex flex-column">
-                        <Nav.Link href="/login" className={`${styles.hamburgerLoginButton} px-3 mt-2`}> Login / Signup</Nav.Link>
+                        <Nav.Link href="/login" className={`${styles.hamburgerLoginButton} px-3 mt-2`}> Login</Nav.Link>
                     </div>
                 </div>
             )}
