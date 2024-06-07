@@ -1,6 +1,6 @@
 ## Side note
 
-This is the full stack web application I have ever made. I used this project to learn how to use React, Bootstrap and Express. Looking back now, so much of the code is written very poorly. I prioritized getting things done rather than doing things well. I didn't know how to use bootstrap and achieved results merely through trial and error and not actually understanding what each line does. You can look at my more recent full stack project(s) to see how I've improved. If I were to do this project again I'd:
+This is the first full stack web application I have ever made. I used this project to learn how to use React, Bootstrap and Express. Looking back now, so much of the code is written very poorly. I prioritized getting things done rather than doing things well. I didn't know how to use bootstrap and achieved results merely through trial and error and not actually understanding what each line does. You can look at my more recent full stack project(s) to see how I've improved. If I were to do this project again I'd:
 
 - Break components up into smaller more readable and manageable components.
 - Would have much less code in the return statements as I now understand much more about bootstrap.
